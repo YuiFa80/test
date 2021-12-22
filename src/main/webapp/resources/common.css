@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+
+	table	{width:30%; border:1; border-style:dashed; border-radius: 10px; border-color:skyblue;}
+	#one	{text-align:center;}
+	input	{text-align:center; width:98%;}
+	#submit	{width:100%; background:green; color:#FFFFFF;}
+	
+	.two	{font-size:12pt;}
+	.three	{height:25px;}

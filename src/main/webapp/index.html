@@ -3,56 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here :: static</title>
-<style>
+<script src="resources/resource.js"></script>
+<script>
+	/*
+	 1.서버와의 통신제어
+	 -HTML 개체의 제어 :: form의 동적 생성
+	 2.데이터의 유효성 검사
+	 3.AJAX(비동기 통신) + JSON
+	 */
+	function authentication() {
+		/*1.HTML 개체와의 연결*/
+		//서버로 통신할때는 name값은 필수 (id값은 서버전송이 안됨)
+		//변수:: let :: 재선언이 안됨|| 상수(변하지 않는 값)::const :: 재할당이 안됨
+		/*2.사용자 데이터의 수집*/
+		const userData = [];
+		const message = [ "상점코드입력", "직원코드입력", "패쓰워드입력" ];
+		userData[0] = document.getElementsByName("srCode")[0]; //ID갖고올경우::document.getElementById, name갖고올경우::document.getElementsByName
+		userData[1] = document.getElementsByName("emCode")[0];
+		userData[2] = document.getElementsByName("emPassword")[0];
+		const f = document.getElementsByName("login")[0]; //◈정적으로 폼을 활용할때◈
 
-div:first-of-type {
-	
-	width: 270px;
-	height: 200px;
-	border: 2px solid black;/*선 두께와 색상*/
-	text-align: center;
-	border-color: rgb(128, 255, 0);
-	border-style: dashed;/*점선*/
-	border-width: thick;/*선 두께: 두겁게*/
-	border-radius: 20px;/*모서리 곡선*/
-}
-
-div:first-of-type {
-	position: absolute;
-	top: 300px;
-	left: 38.5%;
-	right: 40%;
-}
-
-div:last-of-type {
-	position: absolute;
-	top: 400px;
-	left: 41%;
-	right: 40%;
-}
-</style>
+		/*3.form 생성*/
+		//const form = document.createElement("form");       //◈동적으로 폼을 활용할때◈
+		//form.setAttribute("action","Access");       //▣동적으로 폼을 활용할때▣
+		//form.setAttribute("method","post"); 	     //▣동적으로 폼을 활용할때▣
+		/*4.유효성 검사*/
+		for (let index = 0; index < userData.length; index++) {
+			if (!isEmpty(userData[index])) {
+				alert(message[index]);
+				return;
+			} else {
+				//form.appendChild(userData[index]);       //▣동적으로 폼을 활용할때▣
+			}
+		}
+		//const f = document.body.appendChild(form);        //▣동적으로 폼을 활용할때▣
+		/*5.서버 전송*/
+		//f.submit();       //▣동적으로 폼을 활용할때▣
+		f.submit(); //◈정적으로 폼을 활용할때◈
+	}
+</script>
+<link rel="stylesheet" type="text/css" href="resources/common.css">
 </head>
 <body>
-	<center><img alt="move" src="image/move.gif" ></center>
-	
 	<div>
-		<a href="https://www.naver.com" target="_blank"> <img alt="test"
-			src="image/test.jpg"></a>
-	</div>
+		<center><form name="login" action="Access" method="post">
+			<img alt="move" src="image/move.gif" style="width: 30%" />
 
+			<table>
 
-	<div>
-		<form action="Access" method="post">
-			<img alt="SR" src="image/sr.jpg" style="width: 30px; height: 17px">
-			<input type="text" name="srCode" placeholder="Store's number" /><br> 
-			<img alt="EM" src="image/em.jpg" style="width: 30px; height: 17px">
-			<input type="text" name="emCode" placeholder="Employee's number" /><br>
-			<img alt="PW" src="image/pw.jpg" style="width: 30px; height: 17px">
-			<input type="password" name="emPassword" placeholder="Input ur PW" /><br>
-			<input type="submit" value="login" />
+				<tr>
+					<td id="one" colspan="2"><a href="https://www.naver.com"
+						target="_blank"> <img alt="test" src="image/test.jpg"></a></td>
+				</tr>
+				<tr class="three">
+					<td class="two" colspan="2"><input type="text" name="srCode"
+						placeholder="상점 번호" /></td>
+				</tr>
+				<tr class="three">
+					<td class="two" colspan="2"><input type="text" name="emCode"
+						placeholder="직원 번호" /></td>
+				</tr>
+				<tr class="three">
+					<td class="two" colspan="2"><input type="password"
+						name="emPassword" placeholder="비밀 번호" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="button" id="submit" value="로그인"
+						onClick="authentication()" /></td>
+
+				</tr>
+
+			</table>
 		</form>
 	</div>
-
 </body>
-</html>
 
+</html>

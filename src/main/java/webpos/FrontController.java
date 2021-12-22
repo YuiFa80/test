@@ -23,7 +23,7 @@ public class FrontController extends HttpServlet {
        
     }
 
-	//get 속도 빠름
+	//get 속도 빠름(request정보가 보임)
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//post방식과 틀리게 servers에서 server.xml의 63번줄에 인코딩 문구를 넣어야 제대로 된 인코딩이 됨
 		this.doProcess(request, response);

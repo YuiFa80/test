@@ -25,7 +25,7 @@ public class DataAccessObject {
 //		String url = "jdbc:oracle:thin:@14.37.242.53:1521:XE";
 //		String user = "HANYUI";
 //		String passwd = "99172181";
-		String[] total = {"jdbc:oracle:thin:@14.37.242.53:1521:XE","HANYUI","99172181"};
+		String[] total = {"jdbc:oracle:thin:@192.168.0.11:1521:XE","YUYIFA","171231"};
 
 		try {
 
